@@ -11,6 +11,7 @@ public class Menu {
     @Column(name = "menu_code")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int menuCode;
+
     @Column(name = "menu_name")
     private String menuName;
     @Column(name = "menu_price")
