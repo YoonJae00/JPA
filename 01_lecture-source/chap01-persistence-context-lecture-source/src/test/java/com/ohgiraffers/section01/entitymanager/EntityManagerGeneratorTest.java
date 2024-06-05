@@ -87,7 +87,7 @@ public class EntityManagerGeneratorTest {
 
     @Test
     @DisplayName("엔티티 매니저 스코프 확인")
-    public void testManagerLifeCucle() {
+    public void testManagerLifeCycle() {
         // given
         EntityManager manager1 = EntityManagerGenerator.getInstance();
         // when
