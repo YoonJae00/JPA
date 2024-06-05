@@ -44,4 +44,24 @@ public class EntityManagerCRUD {
         System.out.println("findMenu2 = " + findMenu);
         return findMenu;
     }
+
+    public Menu simpleSelectMenu(String menuName) {
+        entityManager = EntityManagerGenerator.getManagerInstance();
+
+        return entityManager.find(Menu.class,menuName);
+    }
+
+    public Long removeAndReturnAllCount(int menuCode) {
+
+        Menu foundMenu = findMenuByMenuCode(menuCode);
+        System.out.println("foundMenu = " + foundMenu);
+        entityManager = EntityManagerGenerator.getManagerInstance();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        entityManager.remove(foundMenu);
+        entityManager.flush();
+
+        return getCount(entityManager);
+    }
 }
