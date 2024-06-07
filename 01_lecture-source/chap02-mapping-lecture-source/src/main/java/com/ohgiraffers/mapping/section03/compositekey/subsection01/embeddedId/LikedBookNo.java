@@ -7,11 +7,11 @@ import jakarta.persistence.Embeddable;
 public class LikedBookNo {
 
     @Column(name = "liked_book_no")
-    private String likedBookNo;
+    private int likedBookNo;
 
     protected LikedBookNo() {}
 
-    public LikedBookNo(String likedBookNo) {
+    public LikedBookNo(int likedBookNo) {
         this.likedBookNo = likedBookNo;
     }
 }
