@@ -1,13 +1,12 @@
 package com.ohgiraffers.associationmapping.section03.bidirection;
 
-import com.ohgiraffers.associationmapping.section01.manytoone.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity(name = "menu_and_category")
+@Entity(name = "ManyToMany")
 @Table(name = "tbl_menu")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,14 +28,12 @@ public class Menu {
     //  특정 엔티티를 영속화(등록) 할 때, 연관 된 엔티티도 함께
     //  영속화 한다는 의미이다.
     //  즉 Menu 엔티티를 영속화 할 때, Category 엔티티도 같이 영속화 시킨다.
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "category_code")
     private Category category;
 
     @Column(name = "orderable_status")
     private String orderableStatus;
-
-
 
 
 }
