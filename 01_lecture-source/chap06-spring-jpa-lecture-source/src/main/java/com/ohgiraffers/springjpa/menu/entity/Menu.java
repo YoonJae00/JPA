@@ -1,12 +1,11 @@
-package com.ohgiraffers.nativequery.sectin01.simple;
+package com.ohgiraffers.springjpa.menu.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
-@Entity(name = "section01Menu")
+@Entity
 @Table(name = "tbl_menu")
 @AllArgsConstructor
 @Getter
@@ -15,6 +14,7 @@ public class Menu {
 
     @Id
     @Column(name = "menu_code")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int menuCode;
 
     @Column(name = "menu_name")

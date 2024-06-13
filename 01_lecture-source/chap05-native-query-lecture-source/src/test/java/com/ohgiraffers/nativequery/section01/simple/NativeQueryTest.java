@@ -1,10 +1,8 @@
-package com.ohgiraffers.nativequery.sectin01.simple;
+package com.ohgiraffers.nativequery.section01.simple;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-import org.hibernate.query.NativeQuery;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 
 @SpringBootTest
 public class NativeQueryTest {

@@ -1,3 +1,6 @@
+server:
+  port: 8001
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -8,8 +11,8 @@ spring:
   jpa:
     show-sql: true
     database: mysql
-    hibernate:
-      ddl-auto: update
+#    ???? ?? ??? ?? ??, ??? ?? ???(???) ??????? ??? ? ?.
+    generate-ddl: false
     properties:
       hibernate:
         format_sql: true

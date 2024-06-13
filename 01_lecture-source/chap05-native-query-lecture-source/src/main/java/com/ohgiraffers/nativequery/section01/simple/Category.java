@@ -1,4 +1,4 @@
-package com.ohgiraffers.nativequery.sectin01.simple;
+package com.ohgiraffers.nativequery.section01.simple;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
