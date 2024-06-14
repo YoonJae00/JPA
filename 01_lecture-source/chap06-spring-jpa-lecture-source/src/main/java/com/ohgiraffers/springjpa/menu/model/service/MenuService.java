@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import java.util.Collections;
 import java.util.List;
@@ -46,9 +47,10 @@ public class MenuService {
     public Page<MenuDTO> findMenuList(Pageable pageable) {
 
         pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() -1,
-                pageable.getPageSize(),
+                2,
                 Sort.by("menuCode").descending());
 
+//        System.out.println("pageable = " + pageable);
         Page<Menu> menuList = repository.findAll(pageable);
 
         return menuList.map(menu -> modelMapper.map(menu,MenuDTO.class));
@@ -70,5 +72,26 @@ public class MenuService {
     @Transactional
     public void registNewMenu(MenuDTO menuDTO) {
         repository.save(modelMapper.map(menuDTO,Menu.class));
+    }
+
+    @Transactional
+    public void modifyMenu(MenuDTO modifyMenu) {
+        Menu foundMenu = repository.findById(modifyMenu.getMenuCode()).orElseThrow(IllegalArgumentException::new);
+
+        // 1. setter 사용
+//        foundMenu.setMenuName(modifyMenu.getMenuName());
+
+        // 2. @Builder
+//        foundMenu = foundMenu.toBuilder().menuName(modifyMenu.getMenuName()).build();
+//        repository.save(foundMenu);
+
+        // 3. Entity 클래스 내부에서 builder 패턴을 사용해서 구현
+        foundMenu = foundMenu.menuName(modifyMenu.getMenuName()).builder();
+        repository.save(foundMenu);
+    }
+
+    @Transactional
+    public void deleteMenu(int menuCode) {
+        repository.deleteById(menuCode);
     }
 }

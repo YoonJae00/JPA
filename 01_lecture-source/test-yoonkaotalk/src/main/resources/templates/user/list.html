@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>유저 id</th>
+        <th>유저 비번</th>
+        <th>이름</th>
+        <th>성별</th>
+        <th>상태</th>
+        <th>회원가입시간</th>
+        <th>삭제</th>
+    </tr>
+    <tr th:each="user : ${user}">
+        <th th:text="${user.userId}"></th>
+        <th th:text="${user.userPw}"></th>
+        <th th:text="${user.userName}"></th>
+        <th th:text="${user.userGender}"></th>
+        <th th:text="${user.status}"></th>
+        <th th:text="${user.startTime}"></th>
+        <th> <button th:onclick="deleteUser(${user.userCode})">삭제하기</button> </th>
+    </tr>
+</table>
+<script>
+    function deleteUser(userCode) {
+
+        console.log(userCode)
+    }
+</script>
+</body>
+</html>

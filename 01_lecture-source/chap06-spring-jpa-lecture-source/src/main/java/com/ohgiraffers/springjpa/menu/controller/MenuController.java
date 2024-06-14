@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,8 +37,7 @@ public class MenuController {
     public String finMenuByCode(@PathVariable("menuCode") int menuCode, Model model) {
 
         MenuDTO menu = menuService.findMenuByCode(menuCode);
-        System.out.println("menu = " + menu);
-        model.addAttribute("menu", menu);
+        model.addAttribute("menuList", menu);
         return "menu/detail";
     }
 
@@ -48,6 +48,7 @@ public class MenuController {
 //
 //        model.addAttribute("menu", menuList);
 
+        System.out.println("pageable = " + pageable);
         // paging 버전
 
         log.info("pageable : {}", pageable);
@@ -103,6 +104,34 @@ public class MenuController {
     public String registNewMenu(MenuDTO menuDTO) {
 
         menuService.registNewMenu(menuDTO);
+
+        return "redirect:/menu/list";
+    }
+
+    @GetMapping("/modify")
+    public String modifyMenu(Model model) {
+
+        return "menu/modify";
+    }
+
+    @PostMapping("/modify")
+    public String modifyMenu(MenuDTO menuDTO, Model model) {
+
+        menuService.modifyMenu(menuDTO);
+
+        return "redirect:/menu/" + menuDTO.getMenuCode();
+    }
+
+    @GetMapping("/delete")
+    public String deleteMenu(Model model) {
+
+        return "menu/delete";
+    }
+
+    @PostMapping("/delete")
+    public String deleteMenu(@RequestParam int menuCode) {
+        System.out.println("menuCode = " + menuCode);
+        menuService.deleteMenu(menuCode);
 
         return "redirect:/menu/list";
     }

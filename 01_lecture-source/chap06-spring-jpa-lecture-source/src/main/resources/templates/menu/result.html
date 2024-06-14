@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>[[${menuPrice}]]원을 초과하는 메뉴 목록</h1>
+<table>
+    <tr>
+        <th>메뉴번호</th>
+        <th>메뉴이름</th>
+        <th>메뉴가격</th>
+        <th>카테고리코드</th>
+        <th>판매상태</th>
+    </tr>
+    <tr th:each="menu : ${menuList}">
+        <th th:text="${menu.menuCode}"></th>
+        <th th:text="${menu.menuName}"></th>
+        <th th:text="${menu.menuPrice}"></th>
+        <th th:text="${menu.categoryCode}"></th>
+        <th th:text="${menu.orderableStatus}"></th>
+    </tr>
+</table>
+</body>
+</html>

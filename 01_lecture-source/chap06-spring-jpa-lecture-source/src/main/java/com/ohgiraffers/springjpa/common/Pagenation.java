@@ -37,7 +37,7 @@ public class Pagenation {
     public static PagingButton getPagingButtonInfo(Page page){
 
         /*현재 페이지에 대한 정보. +1 이유는 0 부터 시작하니까 사용자가 보는 시점에 맞추었다*/
-        int currentPage = page.getNumber() +1;
+        int currentPage = page.getNumber() + 1;
 
         /*페이지 버튼의 기본 갯수*/
 
