@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    tr:hover {
+        background-color: #f5f5f5;
+        cursor: pointer;
+    }
+</style>
 <body>
 <table>
     <tr>
@@ -15,20 +21,28 @@
         <th>회원가입시간</th>
         <th>삭제</th>
     </tr>
-    <tr th:each="user : ${user}">
+    <tr th:each="user : ${user}" th:onclick="'detail(\'' + ${user.userCode} + '\')'">
         <th th:text="${user.userId}"></th>
         <th th:text="${user.userPw}"></th>
         <th th:text="${user.userName}"></th>
         <th th:text="${user.userGender}"></th>
         <th th:text="${user.status}"></th>
         <th th:text="${user.startTime}"></th>
-        <th> <button th:onclick="deleteUser(${user.userCode})">삭제하기</button> </th>
+        <th> <button th:onclick="deleteUser([[${user.userCode}]])">삭제하기</button> </th>
     </tr>
 </table>
 <script>
     function deleteUser(userCode) {
+        var status = confirm('정말 삭제하시겠습니까?')
+        if(status) {
+            location.href = '/delete?userCode=' + userCode;
+        } else {
+            alert('메롱')
+        }
+    }
 
-        console.log(userCode)
+    function detail(userCode) {
+        location.href = '/detail?userCode=' + userCode;
     }
 </script>
 </body>

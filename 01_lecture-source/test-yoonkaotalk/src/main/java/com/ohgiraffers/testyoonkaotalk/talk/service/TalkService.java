@@ -50,4 +50,12 @@ public class TalkService {
 
         return userList.stream().map(m->modelMapper.map(m,UserDTO.class)).collect(Collectors.toList());
     }
+
+    public void delete(int userCode) {
+        userRepository.deleteById(userCode);
+    }
+
+    public User findbyId(int userCode) {
+        return userRepository.findById(userCode).orElseThrow();
+    }
 }

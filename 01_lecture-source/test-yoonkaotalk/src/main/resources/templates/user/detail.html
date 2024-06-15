@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>유저 코드</th>
+        <th>유저 id</th>
+        <th>유저 비번</th>
+        <th>이름</th>
+        <th>성별</th>
+<!--        <th>상태</th>-->
+<!--        <th>회원가입시간</th>-->
+    </tr>
+    <tr>
+        <th th:text="${user.userCode}"></th>
+        <th th:text="${user.userId}"></th>
+        <th th:text="${user.userPw}"></th>
+        <th th:text="${user.userName}"></th>
+        <th th:text="${user.userGender}"></th>
+<!--        <th th:text="${user.status}"></th>-->
+<!--        <th th:text="${user.startTime}"></th>-->
+    </tr>
+</table>
+</body>
+</html>
