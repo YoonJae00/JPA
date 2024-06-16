@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tbl_user")
 @NoArgsConstructor
@@ -33,20 +35,23 @@ public class User {
     @Column(name = "user_gender")
     private String userGender;
 
+    @OneToMany(mappedBy = "user")
+    private List<Chat> chat;
+
     @Embedded
     private Status status;
 
     @Embedded
     private Time time;
 
-    public User(String userId, String userPw, String userName, String userGender, Status status, Time time) {
+
+    public User(String userId, String userPw, String userName, String userGender, List<Chat> chat, Status status, Time time) {
         this.userId = userId;
         this.userPw = userPw;
         this.userName = userName;
         this.userGender = userGender;
+        this.chat = chat;
         this.status = status;
         this.time = time;
     }
-
-
 }

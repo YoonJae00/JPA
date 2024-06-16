@@ -60,4 +60,10 @@ public class talkController {
         System.out.println("user = " + user);
         return "user/detail";
     }
+
+    @GetMapping("/chat")
+    public String chatTest() {
+
+        return "user/websocket";
+    }
 }

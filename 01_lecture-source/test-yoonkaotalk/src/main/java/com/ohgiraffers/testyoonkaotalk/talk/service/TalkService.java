@@ -35,6 +35,7 @@ public class TalkService {
                 userDTO.getUserPw(),
                 userDTO.getUserName(),
                 userDTO.getUserGender(),
+                null,
                 new Status("Y"),
                 new Time(userDTO.getStartTime(),null));
         userRepository.save(user);

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+</head>
+<body>
+<h1>WebSocket Test</h1>
+<textarea id="messageBox" rows="10" cols="30" placeholder="Type your message here..."></textarea><br>
+<button onclick="sendMessage()">Send Message</button>
+<div id="chatBox">
+    <h2>Messages</h2>
+    <div id="messages"></div>
+</div>
+
+<script>
+    const ws = new WebSocket('ws://localhost:8080/talk');
+
+    ws.onopen = () => {
+        // 웹소켓 연결 성공
+        console.log('웹소켓 오픈');
+    };
+
+    ws.onmessage = (event) => {
+        // 서버로 부터 데이터 수신
+        const messages = document.getElementById('messages');
+        const newMessage = document.createElement('div');
+        newMessage.textContent = event.data;
+        messages.appendChild(newMessage);
+    };
+
+    ws.onclose = () => {
+        console.log('WebSocket connection closed');
+    };
+
+    function sendMessage() {
+        const messageBox = document.getElementById('messageBox');
+        const message = messageBox.value;
+        ws.send(message);
+        messageBox.value = '';
+    }
+</script>
+</body>
+</html>
